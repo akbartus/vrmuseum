@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="main.css">
+  <title>VR: So simple even the Marketing team can use it.</title>
+  <meta name="description" content="Now in 3D!">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.6.0/aframe-master.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+
+</head>
+<body>
+
+  <a-scene fog="type: linear; color: #000; far: 16; near: 7">
+
+    <!-- Splash Screen -->
+    <div class="splash">
+      <div class="splash__card">
+        <h1>Welcome to the Virtual Reality Museum</h1>
+        <p>To move around please use WASD keys of your keyboard or by tapping the screen on mobile. Alternatively, you can move by clicking respective button on google cardboard.</p>
+        <img class="splash__img" src="img/room1/main.jpg" />
+        <button class="splash__button">Begin journey</button>
+      </div>
+    </div>
+
+    <!-- Load Assets -->
+    <a-assets>
+      <!-- global -->
+      <img id="floor" src="img/other/floor.jpg">
+      <img id="wall" src="img/other/wall-concrete.jpg">
+  
+      <img id="wall-brick" src="img/other/brick.jpg">
+	  
+	  <!--Room 2-3 Sign -->
+      <img id="leftsign1" src="img/other/leftsign1.png">
+      <img id="rightsign2" src="img/other/rightsign2.png">
+	  <img id="leftsign2" src="img/other/leftsign2.png">
+
+      <!-- Room 1 -->
+      <img id="main" src="img/room1/main.jpg">
+      
+
+   
+
+      <!-- Example Room 2-->
+      
+	  <img id="sensoramaimage" src="img/room2/sensoramaimage.png">
+      <img id="sensoramasign1" src="img/room2/sensoramasign1.png">
+	  
+	    <img id="stereoscopeimage" src="img/room2/stereoscopeimage.png">
+      <img id="stereoscopesign" src="img/room2/stereoscopesign.png">
+      
+	  <img id="sensoramasign2" src="img/room2/sensoramasign2.png">
+      <img id="room2-wire-sign" src="img/room2/wire-sign.png">
+
+      <!-- Example Room 3 -->
+      <img id="swordsign" src="img/room3/swordsign.png">
+      
+	  <img id="nasasign" src="img/room3/nasasign.png">
+	  <img id="nasaimage" src="img/room3/nasaimage.png">
+	  
+	   <img id="virtualboysign" src="img/room3/virtualboysign.png">
+	  <img id="virtualboyimage" src="img/room3/virtualboyimage.png">
+      
+
+      <!-- Example Room 4-->
+       <img id="tetheredimage" src="img/room4/tetheredimage.png">
+	  <img id="tetheredsign" src="img/room4/tetheredsign.png">
+	  
+	    <img id="standaloneimage" src="img/room4/standaloneimage.png">
+      <img id="standalonesign" src="img/room4/standalonesign.png">
+      
+	  <img id="smartphoneimage" src="img/room4/smartphoneimage.png">
+      <img id="smartphonesign" src="img/room4/smartphonesign.png">
+
+      
+	  <!-- Example Room 5 -->
+   <img id="gamestatsign" src="img/room5/gamestatsign.png">
+	  <img id="gamestatimage" src="img/room5/gamestatimage.png">
+	  
+	    <img id="vendorsimage" src="img/room5/vendorsimage.png">
+      <img id="vendorssign" src="img/room5/vendorssign.png">
+      
+	 
+	 
+	 <!-- Example Room 6-->
+       <img id="challenge1image" src="img/room6/challenge1image.png">
+	  <img id="challenge1sign" src="img/room6/challenge1sign.png">
+	  
+	   
+      <img id="movementsign" src="img/room6/movementsign.png">
+      
+	  <img id="motionimage" src="img/room6/motionimage.png">
+      <img id="motionsign" src="img/room6/motionsign.png">
+	  
+	   <!-- Example Room 6-->
+	   <img id="creditsimage" src="img/room7/creditsimage.png">
+	
+      <!-- Videos -->
+      <video id="videoone" autoplay loop="true" webkit-playsinline playsinline src="vid/interview_mh.mp4"></video>
+	  <video id="videotwo" autoplay loop="true" webkit-playsinline playsinline src="vid/damocles.mp4"></video>
+     
+	  
+      <!-- 3d Objects -->
+	  <a-asset-item id="virtualboy" src="3d/virtualboy.dae"></a-asset-item>
+	  <a-asset-item id="cardboard" src="3d/cardboard.dae"></a-asset-item>
+	   <a-asset-item id="oculus" src="3d/oculus.dae"></a-asset-item>
+	   <a-asset-item id="stereoscopic" src="3d/stereoscopic.dae"></a-asset-item>
+	   <a-asset-item id="treadmill" src="3d/treadmill.dae"></a-asset-item>
+
+
+
+    </a-assets>
+
+    <!-- User / Camera -->
+    <a-entity
+      id="player"
+      camera="user-height: 1.6"
+      universal-controls
+      kinematic-body
+      listener
+	  listener2
+      position: "0 9 0"
+    ></a-entity>
+
+
+    <!-- Start Room (spawn) -->
+    <a-entity position="-1.5 1.5 19.5" rotation="0 0 0">
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="-0.3 1.5 -4.4" src="#main" height="4" width="6"></a-image>
+	  </a-entity>
+	  <!-- Video -->
+	<a-video src="#videoone" width="7" height="4" position="-13.4 1.4 -12" rotation="0 90 0"></a-video>
+	<a-video src="#videotwo" width="7" height="4" position="13.4 1.4 -12" rotation="0 -90 0"></a-video>
+    </a-entity>
+ 
+ <!-- Example Room 2 (Left) -->
+    <a-entity position="-10.5 1.5 7.5" rotation="0 90 0">
+      <!-- Room Sign -->
+    <a-image position="1.45 1 6.02" rotation="0 -90 0" scale="1 0.6 1" src="#leftsign1" height="1.5" width="3"></a-image>
+    <!-- Back wall -->
+      <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#sensoramasign1" height="2.5" width="5" scale="1 0.6 1"></a-image>
+      <!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        <a-image position="0.1 1 -4.4" src="#stereoscopeimage" height="3.5" width="5"></a-image>
+		<a-image position="0 5.1 -4.2" rotation="15 0 0" scale="1 0.6 1" src="#stereoscopesign" height="2.5" width="5"></a-image>
+      </a-entity>
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="0.3 1 -4.4" src="#sensoramaimage" height="3.5" width="5"></a-image>
+        <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#sensoramasign2" height="2.5" width="5" scale="1 0.6 1"></a-image>
+      </a-entity>
+    </a-entity>
+
+
+    <!-- Room 3 (Right) -->
+    <a-entity position="7.5 1.5 7.5" rotation="0 -90 0">
+     <!-- Back wall -->
+	<a-image position="0 5.1 -4.2" rotation="15 0 0" src="#swordsign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+     <!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        <a-image position="0.1 1 -4.4" src="#virtualboyimage" height="3.5" width="3"></a-image>
+		<a-image position="0 5.1 -4.2" rotation="15 0 0" scale="1 0.6 1" src="#virtualboysign" height="2.5" width="5"></a-image>
+        
+      </a-entity>
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="0 1 -4.4" src="#nasaimage" height="3.5" width="5"></a-image>
+		<a-image position="0 5.1 -4.2" rotation="15 0 0" src="#nasasign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+      
+        
+      </a-entity>
+    </a-entity>
+
+    <!-- Example Room 4 (Left) -->
+    <a-entity position="-10.5 1.5 -4.5" rotation="0 90 0">
+    <!-- Back wall -->
+      <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#tetheredsign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+	<a-image position="0 1.5 -4.4" src="#tetheredimage" height="4" width="5"></a-image>
+	
+	<!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        <a-image position="0.1 1 -4.4" src="#standaloneimage" height="3.5" width="5"></a-image>
+		<a-image position="0 5.1 -4.2" rotation="15 0 0" scale="1 0.6 1" src="#standalonesign" height="2.5" width="5"></a-image>
+      </a-entity>
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="0.3 1 -4.4" src="#smartphoneimage" height="3.5" width="5"></a-image>
+        <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#smartphonesign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+      </a-entity>
+    </a-entity>
+
+    <!-- Example Room 5 (Right) -->
+    <a-entity position="7.5 1.5 -4.5" rotation="0 -90 0">
+      <!-- Room Sign -->
+      <a-image position="-1.45 1 6.02" rotation="0 90 0" scale="1 0.6 1" src="#rightsign2" height="1.5" width="3"></a-image>
+
+      <!-- Back wall -->
+	<a-image position="0 5.1 -4.2" rotation="15 0 0" src="#gamestatsign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+	<a-image position="0 1.5 -4.4" src="#gamestatimage" height="4" width="5"></a-image>
+     
+	 
+	 <!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        <a-image position="0.1 1 -4.4" src="#vendorsimage" height="3.5" width="5"></a-image>
+		<a-image position="0 5.1 -4.2" rotation="15 0 0" scale="1 0.6 1" src="#vendorssign" height="2.5" width="5"></a-image>
+        
+      </a-entity>
+      <!--left wall -->
+      
+    </a-entity>
+
+    <!-- Example Room 6 (Left) -->
+      <a-entity position="-10.5 1.5 -16.5" rotation="0 90 0">
+      <!-- Room Sign -->
+ 
+      <a-image position="1.45 1 6.02" rotation="0 -90 0" scale="1 0.6 1" src="#leftsign2" height="1.5" width="3"></a-image>
+       
+	   
+	   <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#challenge1sign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+	<a-image position="0 1.5 -4.4" src="#challenge1image" height="4" width="5"></a-image>
+	
+	<!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        
+		<a-image position="0 5.1 -4.2" rotation="15 0 0" scale="1 0.6 1" src="#movementsign" height="2.5" width="5"></a-image>
+      </a-entity>
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="0.3 1 -4.4" src="#motionimage" height="3.5" width="5"></a-image>
+        <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#motionsign" height="2.5" width="5" scale="1 0.6 1"></a-image>
+      </a-entity>
+    </a-entity>
+
+
+    <!-- Example Room 7 (Right) -->
+    <a-entity position="7.5 1.5 -16.5" rotation="0 -90 0">
+     
+ 
+      <!-- Back wall -->
+      <a-image position="0 1.3 -4.4" src="#creditsimage" height="3.5" width="5"></a-image>
+    
+      <!--right wall -->
+      
+    </a-entity>
+
+
+<!-- 3d objects -->
+      <a-entity collada-model="#virtualboy"; position="5.2 0.8 12" rotation="0 90 0" scale="0.4 0.4 0.4"></a-entity>
+	  <a-box id="virtualboybox" position="4.308 0.4 10.7" scale="1.5 0.8 1.5"></a-box>
+	  
+	  <a-entity collada-model="#cardboard"; position="4 1.2 -7" rotation="0 0 0" scale="4 4 4"></a-entity>
+	  <a-box id="cardboardbox" position="6 0.4 -7" scale="1.5 0.8 1.5"></a-box>
+	  
+	  <a-entity collada-model="#oculus"; position="-7 1.2 -1.4" rotation="0 180 0" scale="4 4 4"></a-entity>
+	  <a-box id="oculusbox" position="-7.5 0.4 -0.8" scale="1.5 0.8 1.5"></a-box>
+
+	  <a-entity collada-model="#stereoscopic"; position="-4.5 0.7 2.6" rotation="0 180 0" scale="4 4 4"></a-entity>
+	  <a-box id="stereoscopicbox" position="-7.3 0.4 4.1" scale="1.5 0.8 1.5"></a-box>
+	  
+	  <a-entity collada-model="#treadmill"; position="-10.4 0 -19.5" rotation="0 -90 0" scale="1.8 1.8 1.8"></a-entity>
+
+	  
+	  
+
+
+
+
+    <!-- Ground -->
+    <a-grid id="ground" static-body material="src: #floor; repeat: 15 15" rotation="0 -90 0"></a-grid>
+
+    <!-- Walls (used by map.js -->
+    <a-entity id="walls"></a-entity>
+
+
+    <!-- Sky -->
+    <a-sky id="sky" color="#0000ff"></a-sky>
+
+  </a-scene>
+
+  <script src="js/map.js"></script>
+  <script src="js/video.js"></script>
+
+</body>
+</html>
